@@ -73,6 +73,10 @@ Use one of these deployment formats:
 - https://your-domain.com/api
 - https://api.your-domain.com
 
+Current live backend endpoint:
+
+- http://34.58.125.105/api
+
 ### Available API Routes
 
 Public routes:
@@ -92,6 +96,18 @@ Protected routes:
 - Frontend Stage 1: GitHub Pages is acceptable
 - Backend Stage 2: deploy to a remote server with HTTPS
 - Stage 3 fullstack: frontend and backend both deployed and connected
+
+### Current Server Setup
+
+- VM: Google Cloud Compute Engine
+- Reverse proxy: Nginx (port 80 -> backend port 3000)
+- Backend process manager: PM2 (process name: news-backend)
+
+Useful server commands:
+
+1. pm2 list
+2. pm2 logs news-backend --lines 100 --nostream
+3. sudo systemctl status nginx --no-pager
 
 ## Notes
 
