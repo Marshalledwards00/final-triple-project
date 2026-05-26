@@ -1,0 +1,160 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.56);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal__content {
+  position: relative;
+  width: min(430px, 100%);
+  border-radius: 16px;
+  background-color: #fff;
+  padding: 34px 36px 28px;
+}
+
+.modal__content_info {
+  padding-top: 44px;
+  padding-bottom: 44px;
+}
+
+.modal__close {
+  position: absolute;
+  top: -44px;
+  right: -44px;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  font-size: 44px;
+  line-height: 1;
+}
+
+.modal__title {
+  margin: 0 0 24px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.modal__form {
+  display: grid;
+  gap: 14px;
+}
+
+.modal__label {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.modal__input {
+  width: 100%;
+  margin-top: 8px;
+  border: 0;
+  border-bottom: 1px solid #00000033;
+  border-radius: 0;
+  padding: 8px 0 10px;
+  font-size: 20px;
+}
+
+.modal__password-row {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #00000033;
+}
+
+.modal__input_password {
+  margin-top: 0;
+  border-bottom: 0;
+}
+
+.modal__show-password {
+  border: 0;
+  background: transparent;
+  color: #2f71e5;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.modal__submit {
+  margin-top: 22px;
+  border: 0;
+  border-radius: 999px;
+  background-color: #2f71e5;
+  color: #fff;
+  min-height: 64px;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.modal__submit:disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.modal__error {
+  margin: 0;
+  color: #d93025;
+  font-size: 14px;
+}
+
+.modal__helper-link {
+  justify-self: start;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
+
+.modal__footer {
+  margin: 6px 0 0;
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 18px;
+}
+
+.modal__footer_left {
+  text-align: left;
+  margin-top: 0;
+}
+
+.modal__switch {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .modal__close {
+    top: -38px;
+    right: 0;
+  }
+
+  .modal__title {
+    font-size: 28px;
+  }
+
+  .modal__submit {
+    min-height: 56px;
+    font-size: 20px;
+  }
+}

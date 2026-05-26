@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Work Sans';
+  src:
+    local('Work Sans'),
+    url('https://fonts.gstatic.com/s/worksans/v24/QGYsz_wNahGAdqQ43Rh_fKDp.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:
+    local('Work Sans Medium'),
+    url('https://fonts.gstatic.com/s/worksans/v24/QGYqz_wNahGAdqQ43Rh3H5bk.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:
+    local('Work Sans Bold'),
+    url('https://fonts.gstatic.com/s/worksans/v24/QGYqz_wNahGAdqQ43Rh3H5jX.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:
+    local('Merriweather Regular'),
+    url('https://fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-fCc.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:
+    local('Merriweather Bold'),
+    url('https://fonts.gstatic.com/s/merriweather/v30/u-4n0qyriQwlOrhSvowK_l521wRZWMf_.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
