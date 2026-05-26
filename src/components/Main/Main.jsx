@@ -1,11 +1,15 @@
 import './Main.css'
 
-function Main({ title, subtitle, children, hasMore = false, onShowMore }) {
+function Main({ title, subtitle, children, hasMore = false, onShowMore, hideHeading = false }) {
   return (
     <main className="main">
       <div className="main__container">
-        <h2 className="main__title">{title}</h2>
-        <p className="main__subtitle">{subtitle}</p>
+        {!hideHeading && (
+          <>
+            <h2 className="main__title">{title}</h2>
+            <p className="main__subtitle">{subtitle}</p>
+          </>
+        )}
         {children}
         {hasMore && (
           <button className="main__more" type="button" onClick={onShowMore}>

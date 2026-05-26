@@ -14,7 +14,9 @@ function SavedNewsPage({
   const currentUser = useContext(CurrentUserContext)
 
   const keywordSet = [...new Set(articles.map((item) => item.keyword))]
-  const keywordText = keywordSet.length ? keywordSet.join(', ') : 'No keywords yet'
+  const keywordText = keywordSet.length
+    ? `${keywordSet.slice(0, 2).join(', ')}${keywordSet.length > 2 ? `, and ${keywordSet.length - 2} other` : ''}`
+    : 'No keywords yet'
 
   return (
     <>
@@ -22,10 +24,11 @@ function SavedNewsPage({
         isLoggedIn={isLoggedIn}
         onSignInClick={onSignInClick}
         onSignOut={onSignOut}
-        heroTitle="Saved articles"
-        heroText={`${currentUser?.name || 'User'}, you have ${articles.length} saved articles. By keywords: ${keywordText}`}
+        heroLabel="Saved articles"
+        heroTitle={`${currentUser?.name || 'User'}, you have ${articles.length} saved articles`}
+        heroText={`By keywords: ${keywordText}`}
       />
-      <Main title="Saved news" subtitle={`You saved ${articles.length} articles`}>
+      <Main hideHeading>
         <NewsCardList
           articles={articles}
           isSavedPage

@@ -12,7 +12,10 @@ const { requestLogger, errorLogger } = require('./utils/logger')
 
 const app = express()
 
-mongoose.connect(config.mongoUrl)
+mongoose.connect(config.mongoUrl).catch((error) => {
+	// Keep API process alive so public/news endpoints still work even if DB is temporarily unavailable.
+	console.error('MongoDB connection failed:', error.message)
+})
 
 app.use(helmet())
 app.use(cors())

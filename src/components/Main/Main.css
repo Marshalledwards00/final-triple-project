@@ -5,7 +5,7 @@
 .main__container {
   max-width: var(--page-width);
   margin: 0 auto;
-  padding: 80px 104px;
+  padding: 62px 104px;
 }
 
 .main__title {

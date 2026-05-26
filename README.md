@@ -20,6 +20,7 @@ Create a local .env file in the root directory using .env.example.
 Required variables:
 
 - VITE_NEWS_API_KEY
+- VITE_GUARDIAN_API_KEY (optional fallback live provider)
 - VITE_API_BASE_URL (default: http://localhost:3000/api)
 
 ### Run

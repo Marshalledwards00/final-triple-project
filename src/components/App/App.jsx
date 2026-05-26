@@ -22,6 +22,32 @@ import {
 import { TOKEN_KEY, VISIBLE_CARDS_STEP } from '../../utils/constants'
 import './App.css'
 
+function normalizeSearchText(value = '') {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function getSavedMatches(savedItems, query) {
+  const normalizedQuery = normalizeSearchText(query)
+
+  if (!normalizedQuery) {
+    return []
+  }
+
+  const tokens = normalizedQuery.split(' ').filter(Boolean)
+
+  return savedItems.filter((item) => {
+    const haystack = normalizeSearchText(
+      `${item.title || ''} ${item.text || ''} ${item.keyword || ''} ${item.source || ''}`,
+    )
+
+    return tokens.every((token) => haystack.includes(token))
+  })
+}
+
 function App() {
   const navigate = useNavigate()
   const [activeModal, setActiveModal] = useState('')
@@ -95,9 +121,34 @@ function App() {
     setVisibleCardsCount(VISIBLE_CARDS_STEP)
     setIsSearchLoading(true)
 
+    const savedMatches = getSavedMatches(savedArticles, query).map((item) => ({
+      ...item,
+      id: item._id,
+      publishedAt: item.date,
+      text: item.text,
+      image: item.image,
+      isSaved: true,
+      savedId: item._id,
+      keyword: item.keyword,
+    }))
+
     getNewsByQuery(query)
-      .then((articles) => setSearchResults(articles))
-      .catch(() => setSearchResults([]))
+      .then((articles) => {
+        const merged = [...savedMatches]
+        const seen = new Set(savedMatches.map((item) => item.link || item.id || item.savedId))
+
+        articles.forEach((article) => {
+          const key = article.link || article.id
+
+          if (!seen.has(key)) {
+            merged.push(article)
+            seen.add(key)
+          }
+        })
+
+        setSearchResults(merged)
+      })
+      .catch(() => setSearchResults(savedMatches))
       .finally(() => setIsSearchLoading(false))
   }
 

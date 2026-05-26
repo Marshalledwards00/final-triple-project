@@ -1,7 +1,7 @@
 .news-card {
   position: relative;
   background-color: var(--bg-surface);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-card);
 }
@@ -18,13 +18,12 @@
 }
 
 .news-card__keyword {
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: #fff;
   color: var(--text-primary);
-  padding: 8px 12px;
+  padding: 9px 12px;
   font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .news-card__action {
@@ -65,40 +64,50 @@
 
 .news-card__image {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 2.6;
   object-fit: cover;
   display: block;
 }
 
 .news-card__content {
-  padding: 20px 24px 24px;
+  padding: 18px 24px 22px;
 }
 
 .news-card__date {
   margin: 0;
   color: #b6bcbf;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .news-card__title {
-  margin: 12px 0 16px;
+  margin: 10px 0 14px;
   font-family: var(--font-title);
-  font-size: 26px;
-  line-height: 1.15;
+  font-size: 24px;
+  line-height: 1.24;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .news-card__text {
   margin: 0;
-  line-height: 1.35;
+  line-height: 1.38;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   color: var(--text-primary);
 }
 
 .news-card__source {
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   color: #b6bcbf;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.35px;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Roboto Slab', Georgia, serif;
 }
 
@@ -110,4 +119,14 @@
 .news-card__controls:hover .news-card__hint {
   opacity: 1;
   transform: translateX(0);
+}
+
+.news-card_saved .news-card__action {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+}
+
+.news-card_saved .news-card__keyword {
+  text-transform: none;
 }

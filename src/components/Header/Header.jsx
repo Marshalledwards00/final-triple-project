@@ -4,6 +4,7 @@ import './Header.css'
 
 function Header({
   isHome = false,
+  heroLabel = '',
   heroTitle = 'What is going on in the world?',
   heroText = 'Find the latest news on any topic and save them in your personal account.',
   isLoggedIn,
@@ -12,7 +13,7 @@ function Header({
   onSearch,
 }) {
   return (
-    <header className={`header ${isHome ? 'header_home' : ''}`}>
+    <header className={`header ${isHome ? 'header_home' : 'header_saved'}`}>
       <div className="header__top">
         <Navigation
           onSignInClick={onSignInClick}
@@ -23,6 +24,7 @@ function Header({
       </div>
 
       <div className="header__hero">
+        {!isHome && heroLabel && <p className="header__label">{heroLabel}</p>}
         <h1 className="header__title">{heroTitle}</h1>
         <p className="header__text">{heroText}</p>
         {isHome && <SearchForm onSearch={onSearch} />}

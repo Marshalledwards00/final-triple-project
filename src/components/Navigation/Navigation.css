@@ -1,7 +1,7 @@
 .navigation {
   max-width: var(--page-width);
   margin: 0 auto;
-  min-height: 80px;
+  min-height: 78px;
   padding: 0 104px;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
   position: relative;
   opacity: 1;
   font-weight: 500;
-  line-height: 80px;
+  line-height: 78px;
   transition: opacity 0.2s ease;
 }
 
@@ -47,6 +47,15 @@
   background-color: #fff;
 }
 
+.header_saved .navigation__logo,
+.header_saved .navigation__link {
+  color: #1a1b22;
+}
+
+.header_saved .navigation__link_active::after {
+  background-color: #1a1b22;
+}
+
 .navigation__button {
   border: 1px solid #fff;
   color: #fff;
@@ -60,6 +69,13 @@
 
 .navigation__button_light {
   border-color: #fff;
+}
+
+.header_saved .navigation__button {
+  border-color: #1a1b22;
+  color: #1a1b22;
+  min-width: 112px;
+  min-height: 48px;
 }
 
 @media (max-width: 768px) {

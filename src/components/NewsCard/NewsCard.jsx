@@ -8,7 +8,7 @@ function NewsCard({
   isLoggedIn,
 }) {
   return (
-    <article className="news-card">
+    <article className={`news-card ${isSavedPage ? 'news-card_saved' : ''}`}>
       <div className="news-card__controls">
         {isSavedPage && article.keyword && (
           <span className="news-card__keyword">{article.keyword}</span>
