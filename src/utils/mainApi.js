@@ -1,4 +1,18 @@
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
+function getDefaultApiBaseUrl() {
+  if (typeof window === 'undefined') {
+    return 'http://localhost:3000/api'
+  }
+
+  const { hostname, protocol } = window.location
+
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    return 'http://localhost:3000/api'
+  }
+
+  return `${protocol}//${hostname}/api`
+}
+
+const BASE_URL = getDefaultApiBaseUrl().replace(/\/$/, '')
 
 function checkResponse(response) {
   if (!response.ok) {

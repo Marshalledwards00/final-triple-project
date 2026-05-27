@@ -1,7 +1,5 @@
 import { newsData } from './newsData'
 
-const NEWS_API_BASE_URL = 'https://newsapi.org/v2/everything'
-
 function getDefaultApiBaseUrl() {
   if (typeof window === 'undefined') {
     return 'http://localhost:3000/api'
@@ -286,14 +284,9 @@ function rankGuardianArticles(articles, query) {
     .map(({ article }) => article)
 }
 
-function fetchNewsApiResults(query, apiKey) {
-  const url = new URL(NEWS_API_BASE_URL)
+function fetchNewsApiResults(query) {
+  const url = new URL(`${APP_API_BASE_URL}/news/newsapi`)
   url.searchParams.set('q', query)
-  url.searchParams.set('language', 'en')
-  url.searchParams.set('searchIn', 'title,description')
-  url.searchParams.set('sortBy', 'relevancy')
-  url.searchParams.set('pageSize', '50')
-  url.searchParams.set('apiKey', apiKey)
 
   return fetch(url)
     .then((response) => {
@@ -335,7 +328,6 @@ async function fetchGuardianResults(query) {
 
 export async function getNewsByQuery(query) {
   const normalizedQuery = normalizeText(query)
-  const newsApiKey = (import.meta.env.VITE_NEWS_API_KEY || '').trim()
 
   if (!normalizedQuery) {
     return filterLocalNews(query)
@@ -344,12 +336,10 @@ export async function getNewsByQuery(query) {
   let newsApiArticles = []
   let guardianArticles = []
 
-  if (newsApiKey) {
-    try {
-      newsApiArticles = await fetchNewsApiResults(query, newsApiKey)
-    } catch {
-      // Continue and try Guardian provider.
-    }
+  try {
+    newsApiArticles = await fetchNewsApiResults(query)
+  } catch {
+    // Continue and try Guardian provider.
   }
 
   try {

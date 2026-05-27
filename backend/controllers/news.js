@@ -1,4 +1,5 @@
 const GUARDIAN_API_BASE_URL = 'https://content.guardianapis.com/search'
+const NEWS_API_BASE_URL = 'https://newsapi.org/v2/everything'
 
 const FALLBACK_GUARDIAN_RESULTS = [
   {
@@ -178,6 +179,51 @@ async function getGuardianNews(req, res) {
   }
 }
 
+function buildNewsApiUrl({ query, apiKey }) {
+  const url = new globalThis.URL(NEWS_API_BASE_URL)
+  url.searchParams.set('q', query)
+  url.searchParams.set('language', 'en')
+  url.searchParams.set('searchIn', 'title,description')
+  url.searchParams.set('sortBy', 'relevancy')
+  url.searchParams.set('pageSize', '50')
+  url.searchParams.set('apiKey', apiKey)
+  return url.toString()
+}
+
+async function getNewsApiNews(req, res) {
+  const query = String(req.query.q || '').trim()
+
+  if (!query) {
+    return res.status(400).send({ message: 'Query parameter q is required' })
+  }
+
+  const keyFromClient = String(req.query.apiKey || '').trim()
+  const apiKey =
+    String(process.env.NEWS_API_KEY || '').trim() ||
+    String(process.env.VITE_NEWS_API_KEY || '').trim() ||
+    keyFromClient
+
+  if (!apiKey) {
+    return res.send({ status: 'ok', totalResults: 0, articles: [] })
+  }
+
+  try {
+    const response = await globalThis.fetch(buildNewsApiUrl({ query, apiKey }))
+
+    if (!response.ok) {
+      const error = new Error(`News API request failed with status ${response.status}`)
+      error.status = response.status
+      throw error
+    }
+
+    const data = await response.json()
+    return res.send(data)
+  } catch {
+    return res.status(502).send({ message: 'News API request failed' })
+  }
+}
+
 module.exports = {
+  getNewsApiNews,
   getGuardianNews,
 }

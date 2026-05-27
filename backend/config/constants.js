@@ -6,6 +6,7 @@ const HTTP_STATUS_CODES = {
   FORBIDDEN: 403,
   NOT_FOUND: 404,
   CONFLICT: 409,
+  SERVICE_UNAVAILABLE: 503,
   SERVER_ERROR: 500,
 }
 
@@ -18,6 +19,7 @@ const MESSAGES = {
   INVALID_DATA: 'Invalid data provided',
   DUPLICATE_EMAIL: 'A user with this email already exists',
   PASSWORD_RESET_SUCCESS: 'Password was reset successfully. You can now sign in.',
+  DATABASE_UNAVAILABLE: 'Account services are temporarily unavailable. Please try again soon.',
   ROUTE_NOT_FOUND: 'Requested resource was not found',
   SERVER_ERROR: 'An error has occurred on the server',
 }

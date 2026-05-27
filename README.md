@@ -2,6 +2,10 @@
 
 Fullstack News Explorer project for Stage 1, 2, and 3.
 
+## Project Video
+
+- https://www.loom.com/share/7e1bb03bd7254ee3bb574ecfcda499d7
+
 ## Project Structure
 
 - Frontend (React + Vite): root directory
