@@ -75,12 +75,10 @@ The API runs on localhost:3000.
 
 Use one of these deployment formats:
 
-- https://your-domain.com/api
-- https://api.your-domain.com
+- www.Mfinalnews.jumpingcrab.com
+- api.Mfinalnews.jumpingcrab.com
 
-Current live backend endpoint:
 
-- http://34.58.125.105/api
 
 ### Available API Routes
 
