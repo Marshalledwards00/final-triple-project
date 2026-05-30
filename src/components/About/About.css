@@ -1,14 +1,60 @@
+/* Center the text block inside the About section */
+.about__textblock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 1100px) {
+  .about__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .about__avatar {
+    width: 464px;
+    height: 464px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .about__text {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
+}
 .about {
   background-color: var(--bg-surface);
-}
-
 .about__container {
   max-width: var(--page-width);
-  margin: 0 auto;
-  padding: 80px 104px;
+  padding: 80px 104px 80px 144px;
   display: flex;
-  gap: 56px;
+  flex-direction: column;
   align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+
+@media (min-width: 1101px) {
+  .about__container {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 48px;
+    justify-content: center;
+  }
+  .about__avatar {
+    margin: 0;
+  }
+  .about__textblock {
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+  }
 }
 
 .about__avatar {
@@ -19,6 +65,8 @@
   object-position: center;
   display: block;
   flex-shrink: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about__title {
@@ -41,12 +89,13 @@
     text-align: left;
     gap: 24px;
   }
-
   .about__avatar {
-    width: 272px;
-    height: 272px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
   }
-
   .about__text {
     font-size: 16px;
     margin-top: 16px;

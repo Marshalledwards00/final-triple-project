@@ -1,15 +1,26 @@
 import { useMemo, useState } from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 function RegisterModal({ isOpen, onClose, onSwitchToLogin, onSubmit, isLoading, errorText }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
+  const emailError = email && !EMAIL_REGEX.test(email) ? 'Invalid email address' : ''
+  const passwordError = password && password.length < 6 ? 'Password must be at least 6 characters' : ''
+  const nameError = name && name.trim().length < 2 ? 'Username must be at least 2 characters' : ''
+
   const isFormValid = useMemo(
-    () => name.trim().length >= 2 && email.trim().length > 0 && password.length >= 6,
-    [name, email, password],
+    () => name.trim().length >= 2
+      && email.trim().length > 0
+      && password.length >= 6
+      && !emailError
+      && !passwordError
+      && !nameError,
+    [name, email, password, emailError, passwordError, nameError],
   )
 
   const handleSubmit = (event) => {
@@ -37,6 +48,7 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin, onSubmit, isLoading, 
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
+        <p className="modal__field-error">{emailError}</p>
       </label>
       <label className="modal__label">
         Password
@@ -58,6 +70,7 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin, onSubmit, isLoading, 
             {isPasswordVisible ? 'Hide' : 'Show'}
           </button>
         </div>
+        <p className="modal__field-error">{passwordError}</p>
       </label>
       <label className="modal__label">
         Username
@@ -70,13 +83,14 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin, onSubmit, isLoading, 
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
+        <p className="modal__field-error">{nameError}</p>
       </label>
-      <p className="modal__footer">
+      <div className="modal__footer modal__footer_below">
         or{' '}
         <button className="modal__switch" type="button" onClick={onSwitchToLogin}>
           Sign in
         </button>
-      </p>
+      </div>
     </ModalWithForm>
   )
 }

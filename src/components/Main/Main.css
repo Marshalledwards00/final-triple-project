@@ -1,5 +1,5 @@
 .main {
-  background-color: #f5f6f7;
+  background-color: #fff;
 }
 
 .main__container {
@@ -20,6 +20,8 @@
 }
 
 .main__more {
+  position: relative;
+  z-index: 1;
   display: block;
   margin: 56px auto 0;
   border: 0;
@@ -31,6 +33,15 @@
   font-weight: 500;
   padding: 0 20px;
   cursor: pointer;
+}
+
+
+.main__more-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 @media (max-width: 768px) {

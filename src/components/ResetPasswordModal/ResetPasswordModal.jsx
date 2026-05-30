@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 function ResetPasswordModal({
   isOpen,
   onClose,
@@ -14,9 +16,22 @@ function ResetPasswordModal({
   const [confirmPassword, setConfirmPassword] = useState('')
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
+  const emailError = email && !EMAIL_REGEX.test(email) ? 'Invalid email address' : ''
+  const passwordError = newPassword && newPassword.length < 6
+    ? 'Password must be at least 6 characters'
+    : ''
+  const confirmError = confirmPassword && newPassword !== confirmPassword
+    ? 'Passwords do not match'
+    : ''
+
   const isFormValid = useMemo(
-    () => email.trim().length > 0 && newPassword.length >= 6 && newPassword === confirmPassword,
-    [email, newPassword, confirmPassword],
+    () => email.trim().length > 0
+      && newPassword.length >= 6
+      && newPassword === confirmPassword
+      && !emailError
+      && !passwordError
+      && !confirmError,
+    [email, newPassword, confirmPassword, emailError, passwordError, confirmError],
   )
 
   const handleSubmit = (event) => {
@@ -44,6 +59,7 @@ function ResetPasswordModal({
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
+        <p className="modal__field-error">{emailError}</p>
       </label>
       <label className="modal__label">
         New password
@@ -65,6 +81,7 @@ function ResetPasswordModal({
             {isPasswordVisible ? 'Hide' : 'Show'}
           </button>
         </div>
+        <p className="modal__field-error">{passwordError}</p>
       </label>
       <label className="modal__label">
         Confirm password
@@ -77,6 +94,7 @@ function ResetPasswordModal({
           value={confirmPassword}
           onChange={(event) => setConfirmPassword(event.target.value)}
         />
+        <p className="modal__field-error">{confirmError}</p>
       </label>
     </ModalWithForm>
   )

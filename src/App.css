@@ -1,3 +1,93 @@
+@media (max-width: 600px) {
+  body, html {
+    background: #fff !important;
+    font-size: 17px;
+  }
+  .main__container {
+    padding: 16px 0 !important;
+  }
+  .news-card-list {
+    gap: 12px !important;
+    padding: 0 0 24px 0 !important;
+  }
+  .news-card {
+    border-radius: 18px !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    margin-bottom: 12px;
+  }
+  .news-card__controls {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+  .news-card__keyword {
+    font-size: 0.85rem;
+    padding: 7px 10px;
+  }
+  .news-card__action {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+  .header__hero {
+    padding: 36px 8px 36px !important;
+  }
+  .header__title {
+    font-size: 1.5rem !important;
+  }
+  .header__text {
+    font-size: 1rem !important;
+    margin: 18px 0 32px !important;
+  }
+  .main__title {
+    font-size: 1.3rem !important;
+  }
+  .main__subtitle {
+    font-size: 1rem !important;
+    margin: 10px 0 24px !important;
+  }
+  .modal__content {
+    width: 98vw !important;
+    padding: 18px 8px 18px !important;
+    border-radius: 18px !important;
+  }
+  .modal__title {
+    font-size: 1.2rem !important;
+  }
+  .modal__form {
+    gap: 12px !important;
+  }
+  .modal__input, .modal__label {
+    font-size: 1rem !important;
+  }
+  .modal__close {
+    top: 0 !important;
+    right: 0 !important;
+    font-size: 2rem !important;
+  }
+  .navigation {
+    padding: 0 8px !important;
+    min-height: 56px !important;
+  }
+  .navigation__logo {
+    font-size: 1.1rem !important;
+  }
+  .navigation__links {
+    gap: 12px !important;
+  }
+  .main__more, .search-form__button {
+    width: 100% !important;
+    font-size: 1.1rem !important;
+    padding: 14px 0 !important;
+    border-radius: 12px !important;
+    margin: 12px 0 0 0 !important;
+  }
+  .search-form__input {
+    font-size: 1.1rem !important;
+    padding: 12px 10px !important;
+    border-radius: 12px !important;
+  }
+}
 .counter {
   font-size: 16px;
   padding: 5px 10px;

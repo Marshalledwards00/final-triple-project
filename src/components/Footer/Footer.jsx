@@ -7,12 +7,8 @@ function Footer() {
         <p className="footer__copy">© 2026 Supersite, Powered by News API</p>
         <div className="footer__right">
           <div className="footer__links">
-            <a href="/">
-              Home
-            </a>
-            <span>
-              TripleTen
-            </span>
+            <a href="/">Home</a>
+            <a href="https://www.tripleten.com" target="_blank" rel="noopener noreferrer">TripleTen</a>
           </div>
           <div className="footer__social">
             <a href="https://github.com/Marshalledwards00/final-triple-project/tree/main/backend" target="_blank" rel="noreferrer" aria-label="GitHub">
@@ -22,12 +18,6 @@ function Footer() {
               <img src="/linkedin.svg" alt="" />
             </a>
           </div>
-        </div>
-        <div className="footer__links footer__links_mobile">
-          <a href="/">Home</a>
-          <span>
-            TripleTen
-          </span>
         </div>
       </div>
     </footer>

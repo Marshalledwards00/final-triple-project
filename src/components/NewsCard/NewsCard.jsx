@@ -1,5 +1,6 @@
 import './NewsCard.css'
 
+
 function NewsCard({
   article,
   onToggleSave,
@@ -7,8 +8,20 @@ function NewsCard({
   isSavedPage,
   isLoggedIn,
 }) {
+  const handleCardClick = (e) => {
+    // Prevent click if user clicks the save/delete button
+    if (
+      e.target.closest('.news-card__action') ||
+      e.target.closest('.news-card__action-icon')
+    ) {
+      return
+    }
+    if (article.link) {
+      window.open(article.link, '_blank', 'noopener')
+    }
+  }
   return (
-    <article className={`news-card ${isSavedPage ? 'news-card_saved' : ''}`}>
+    <article className={`news-card ${isSavedPage ? 'news-card_saved' : ''}`} tabIndex={0} onClick={handleCardClick} style={{ cursor: 'pointer' }}>
       <div className="news-card__controls">
         {isSavedPage && article.keyword && (
           <span className="news-card__keyword">{article.keyword}</span>
@@ -19,7 +32,7 @@ function NewsCard({
             <button
               type="button"
               className={`news-card__action ${article.isSaved ? 'news-card__action_saved' : ''}`}
-              onClick={() => onToggleSave(article)}
+              onClick={(e) => { e.stopPropagation(); onToggleSave(article) }}
               aria-label="Save article"
             >
               <img
@@ -33,7 +46,7 @@ function NewsCard({
           <button
             type="button"
             className="news-card__action news-card__action_delete"
-            onClick={() => onDeleteArticle(article.savedId)}
+            onClick={(e) => { e.stopPropagation(); onDeleteArticle(article.savedId) }}
             aria-label="Delete article"
           >
             <img className="news-card__action-icon" src="/trash.svg" alt="" />

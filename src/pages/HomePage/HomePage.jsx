@@ -38,9 +38,11 @@ function HomePage({
             articles={articles}
             onToggleSave={onToggleSave}
             isLoggedIn={isLoggedIn}
+            hasMore={hasMore}
+            onShowMore={onShowMore}
           />
         ) : (
-          <p className="news-card-list__empty">Search for current topics and save the best stories.</p>
+          <></>
         )}
       </Main>
       <About />

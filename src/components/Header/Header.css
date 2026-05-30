@@ -18,6 +18,20 @@
   width: min(100%, 608px);
   margin: 0 auto;
   padding: 80px 16px 80px;
+  background: transparent;
+}
+
+@media (max-width: 600px) {
+  .header__hero {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 64px;
+    padding-bottom: 120px;
+    min-height: 340px;
+    background: transparent;
+  }
 }
 
 .header__label {

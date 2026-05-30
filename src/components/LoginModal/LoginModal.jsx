@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
+import './LoginModal.css'
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function LoginModal({
   isOpen,
@@ -14,9 +17,15 @@ function LoginModal({
   const [password, setPassword] = useState('')
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
+  const emailError = email && !EMAIL_REGEX.test(email) ? 'Invalid email address' : ''
+  const passwordError = password && password.length < 6 ? 'Password must be at least 6 characters' : ''
+
   const isFormValid = useMemo(
-    () => email.trim().length > 0 && password.trim().length > 0,
-    [email, password],
+    () => email.trim().length > 0
+      && password.trim().length > 0
+      && !emailError
+      && !passwordError,
+    [email, password, emailError, passwordError],
   )
 
   const handleSubmit = (event) => {
@@ -28,6 +37,7 @@ function LoginModal({
     onOpenResetPassword(email)
   }
 
+  // Add a mobile-only class to the modal content
   return (
     <ModalWithForm
       isOpen={isOpen}
@@ -48,6 +58,7 @@ function LoginModal({
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
+        <p className="modal__field-error">{emailError}</p>
       </label>
       <label className="modal__label">
         Password
@@ -68,6 +79,7 @@ function LoginModal({
             {isPasswordVisible ? 'Hide' : 'Show'}
           </button>
         </div>
+        <p className="modal__field-error">{passwordError}</p>
       </label>
       <button
         type="button"
@@ -76,12 +88,12 @@ function LoginModal({
       >
         Reset password
       </button>
-      <p className="modal__footer">
+      <div className="modal__footer modal__footer_below">
         or{' '}
         <button className="modal__switch" type="button" onClick={onSwitchToRegister}>
           Sign up
         </button>
-      </p>
+      </div>
     </ModalWithForm>
   )
 }

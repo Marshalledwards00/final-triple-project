@@ -1,3 +1,6 @@
+  .footer__links a:first-child {
+    margin-top: 32px;
+  }
 .footer {
   margin-top: auto;
   background-color: #fff;
@@ -8,27 +11,37 @@
   margin: 0 auto;
   padding: 32px 104px 24px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
-  gap: 14px;
+  align-items: center;
+  gap: 0;
 }
 
 .footer__copy {
   margin: 0;
   color: #b6bcbf;
   font-size: 16px;
+  flex-shrink: 0;
 }
 
 .footer__right {
   display: flex;
   align-items: center;
   gap: 42px;
-}
+  }
 
+  .footer__links a:first-child {
+}
+    margin-left: 0;
 .footer__links {
   display: flex;
-  gap: 34px;
+  gap: 64px;
   font-size: 18px;
+}
+
+.footer__links a {
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .footer__social {
@@ -46,24 +59,65 @@
 }
 
 @media (max-width: 768px) {
+  .footer__links a:first-child,
+  .footer__links a:nth-child(2) {
+    margin-top: 16px;
+  }
   .footer__container {
-    padding: 20px 16px;
+    flex-direction: column;
     align-items: flex-start;
-    flex-wrap: wrap;
+    gap: 14px;
+    padding: 20px 16px;
   }
 
   .footer__right {
-    margin-left: auto;
+    order: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .footer__copy {
+    order: 2;
+    margin-top: 16px;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
   }
 
   .footer__links {
-    display: none;
+    order: 0;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .footer__social {
+    order: 0;
   }
 
   .footer__links_mobile {
-    display: grid;
+    display: none;
+  }
+
+  .footer__links {
+    order: 0;
+    flex-direction: row;
     gap: 20px;
-    font-size: 18px;
-    margin-top: 12px;
+    align-items: center;
+  }
+  .footer__right, .footer__links, .footer__social {
+    display: flex !important;
+    align-items: center;
+    gap: 24px;
+    margin: 0;
+  }
+  .footer__links {
+    order: 0;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
   }
 }

@@ -1,12 +1,12 @@
 import './About.css'
-import authorImage from '../../assets/author.jpg'
+import authorImage from '../assets/author.jpg'
 
 function About() {
   return (
     <section className="about">
       <div className="about__container">
         <img className="about__avatar" src={authorImage} alt="Author portrait" />
-        <div>
+        <div className="about__textblock">
           <h2 className="about__title">About the author</h2>
           <p className="about__text">
             My name is William Edwards and I'm an aspiring software developer driven

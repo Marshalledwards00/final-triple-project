@@ -10,6 +10,7 @@ function ModalWithForm({
   isSubmitDisabled,
   errorText,
   isInfo,
+  footer,
   children,
 }) {
   useEffect(() => {
@@ -57,6 +58,7 @@ function ModalWithForm({
               {submitText}
             </button>
           )}
+          {footer}
         </form>
       </div>
     </div>
